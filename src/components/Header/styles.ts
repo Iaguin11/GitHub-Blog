@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   height: 293px;
-  background-color:${props => props.theme.baseBorder};
+  background-color: ${(props) => props.theme.baseBorder};
 `
 export const DivContent = styled.div`
   height: 258px;
