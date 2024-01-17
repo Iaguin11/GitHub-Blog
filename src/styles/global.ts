@@ -8,4 +8,18 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  main {
+    width: 100%;
+    max-width: 54rem;
+    margin: 0 auto;
+  }
+
+  body {
+    background: ${(props) => props.theme.background};
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    text-decoration: none;
+  }
+
 `

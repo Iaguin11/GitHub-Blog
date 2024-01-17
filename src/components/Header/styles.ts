@@ -1,22 +1,16 @@
 import styled from 'styled-components'
+import bgHeader from '../../assets/background-img.png'
 
 export const HeaderContainer = styled.header`
-  height: 293px;
-  background-color: ${(props) => props.theme.baseBorder};
-`
-export const DivContent = styled.div`
-  height: 258px;
+  height: 18.5rem;
+  width: 100%;
+  background: url(${bgHeader}) no-repeat center;
+  background-size: cover;
   display: flex;
-  gap: 20px;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  h1 {
-    color: #3294f8;
-    font-family: 'Coda';
-    font-size: 1.5;
-    font-weight: 400;
-    line-height: 160%;
+  img {
+    margin-bottom: 5rem;
   }
 `

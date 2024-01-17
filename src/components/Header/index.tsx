@@ -1,12 +1,9 @@
-import { DivContent, HeaderContainer } from './styles'
-import logo from '../../assets/logo.svg'
+import { HeaderContainer } from './styles'
+import logo from '../../assets/Logo.png'
 export function Header() {
   return (
     <HeaderContainer>
-      <DivContent>
-        <img src={logo} alt="" />
-        <h1>GITHUB BLOG</h1>
-      </DivContent>
+      <img src={logo} alt="logo da página." />
     </HeaderContainer>
   )
 }

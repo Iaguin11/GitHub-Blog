@@ -1,20 +1,16 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import {
-  faUpRightFromSquare,
-  faUserGroup,
-} from '@fortawesome/free-solid-svg-icons'
+import { faBuilding, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
-import {
-  ProfileContent,
-  AboutProfile,
-  Footer,
-  ProfileContainer,
-} from './styles'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { ProfileContent, ProfileContainer, ProfileImg } from './styles'
 
-interface GithubUser {
+import { useState, useEffect } from 'react'
+import { MyLink } from '../../../../components/Link'
+import { api } from '../../../../lib/axios'
+import { Spinner } from '../../../../components/SpinkKit'
+
+const userName = 'Iaguin11'
+
+export interface GithubUser {
   login: string
   name: string
   avatar_url: string
@@ -22,19 +18,20 @@ interface GithubUser {
   followers: number
   html_url: string
   bio: string
+  company?: string
 }
 
 export function Profile() {
   const [data, setData] = useState<GithubUser>({} as GithubUser)
+  const [loading, setLoading] = useState(false)
 
-  const handleFetch = async () => {
+  async function handleFetch() {
     try {
-      const response = await axios.get('https://api.github.com/users/Iaguin11')
-      console.log(data)
+      setLoading(true)
+      const response = await api.get(`/users/${userName}`)
       setData(response.data)
-    } catch (error) {
-      console.log('Deu merda')
-      console.log(error)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -42,37 +39,39 @@ export function Profile() {
     handleFetch()
   }, [])
 
-  if (!data) {
-    return <div>Loading...</div>
-  }
   return (
     <ProfileContainer>
-      <ProfileContent>
-        <img src={data.avatar_url} alt="" />
-        <AboutProfile>
-          <div>
-            <h3>{data.name}</h3>
-            <p>
-              <Link to={data.html_url} target="_black">
-                GitHub
-                <FontAwesomeIcon icon={faUpRightFromSquare} />
-              </Link>
-            </p>
-          </div>
-          <p>{data.bio}</p>
-          <Footer>
-            <span>
-              <FontAwesomeIcon icon={faGithub} />
-              {data.login}
-            </span>
-            <span></span>
-            <span>
-              <FontAwesomeIcon icon={faUserGroup} />
-              {data.followers} Seguidores
-            </span>
-          </Footer>
-        </AboutProfile>
-      </ProfileContent>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <ProfileImg src={data.avatar_url} />
+          <ProfileContent>
+            <header>
+              <h1>{data.name}</h1>
+
+              <MyLink text="Github" href={data.html_url} target="_blank" />
+            </header>
+            <p>{data.bio}</p>
+            <ul>
+              <li>
+                <FontAwesomeIcon icon={faGithub} />
+                {data.login}
+              </li>
+              {data?.company && (
+                <li>
+                  <FontAwesomeIcon icon={faBuilding} />
+                  {data.company}
+                </li>
+              )}
+              <li>
+                <FontAwesomeIcon icon={faUserGroup} />
+                {data.followers} seguidores
+              </li>
+            </ul>
+          </ProfileContent>
+        </>
+      )}
     </ProfileContainer>
   )
 }
