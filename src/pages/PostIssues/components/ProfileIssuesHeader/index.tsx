@@ -6,10 +6,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ProfileIssuesContainer } from './styles'
-import { MyLink } from '../../../components/Link'
+import { MyLink } from '../../../../components/Link'
 import { useNavigate } from 'react-router-dom'
-import { PostHomeProps } from '../../Home'
-import { Spinner } from '../../../components/SpinkKit'
+import { PostHomeProps } from '../../../Home'
+import { Spinner } from '../../../../components/SpinkKit'
 import moment from 'moment'
 
 interface ProfileIssuesHeaderProps {

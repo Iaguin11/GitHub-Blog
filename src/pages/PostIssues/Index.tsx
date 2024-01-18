@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { ProfileIssuesHeader } from './components/ProfileIssues'
-import { IssuesContent, IssuesDescription, PostIssuesContainer } from './styles'
+
 import { api } from '../../lib/axios'
 import { useParams } from 'react-router-dom'
 import { PostHomeProps } from '../Home'
+import { ProfileIssuesHeader } from './components/ProfileIssuesHeader'
+import { PostContent } from './components/PostContentIssues'
 
 const userName = 'Iaguin11'
 const repoName = 'GitHub-Blog'
@@ -30,28 +31,9 @@ export function Issues() {
   }, [])
 
   return (
-    <PostIssuesContainer>
+    <main>
       <ProfileIssuesHeader loading={loading} postData={postData} />
-      <IssuesContent>
-        <IssuesDescription>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in JavaScript and what
-            properties they have. These can be used to build other data
-            structures. Wherever possible, comparisons with other languages are
-            drawn.{' '}
-          </p>
-          <p>
-            {' '}
-            Dynamic typing JavaScript is a loosely typed and dynamic language.
-            Variables in JavaScript are not directly associated with any
-            particular value type, and any variable can be assigned (and
-            re-assigned) values of all types:{' '}
-          </p>
-        </IssuesDescription>
-        <div></div>
-      </IssuesContent>
-    </PostIssuesContainer>
+      <PostContent description={postData.body} />
+    </main>
   )
 }

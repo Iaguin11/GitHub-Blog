@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { DEVICE_BREAKPOINTS } from '../../../../styles/themes/deviceBreakPoints'
 
 export const LinkPost = styled(Link)`
   border: 1px solid transparent;
@@ -21,11 +22,15 @@ export const PostContainer = styled.div`
 
   border-radius: 10px;
   background: ${(props) => props.theme.basePost};
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    width: 700px;
+  }
 `
 export const PostTitle = styled.div`
   display: flex;
   gap: 16px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 20px;
 
   h2 {
     flex: 1;

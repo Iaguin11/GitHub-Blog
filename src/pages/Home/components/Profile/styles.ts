@@ -1,15 +1,23 @@
 import styled from 'styled-components'
+import { DEVICE_BREAKPOINTS } from '../../../../styles/themes/deviceBreakPoints'
 
 export const ProfileContainer = styled.section`
   width: 100%;
-  min-height: 13.25rem;
-  margin-top: -5.5rem;
+  min-height: 212px;
+  margin-top: -88px;
   background: ${(props) => props.theme.baseProfile};
   box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding: 2rem 2.5rem;
+  padding: 32px 40px;
   display: flex;
   gap: 2rem;
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    margin: -5rem auto;
+    min-height: 100px;
+    width: 700px;
+    padding: 1rem 2rem;
+  }
 `
 
 export const ProfileImg = styled.img`
@@ -17,6 +25,11 @@ export const ProfileImg = styled.img`
   height: 9.25rem;
   border-radius: 8px;
   object-fit: cover;
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    width: 7rem;
+    height: 7rem;
+  }
 `
 
 export const ProfileContent = styled.div`
@@ -62,10 +75,19 @@ export const ProfileContent = styled.div`
       gap: 0.5rem;
 
       svg {
-        width: 1.125rem;
-        height: 1.125rem;
+        width: 18px;
+        height: 18px;
         color: ${(props) => props.theme.baseLabel};
       }
+    }
+  }
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    li {
+      font-size: 0.9rem;
+    }
+    svg {
+      width: 16px;
+      height: 16px;
     }
   }
 `

@@ -1,12 +1,13 @@
 import styled from 'styled-components'
+import { DEVICE_BREAKPOINTS } from '../../../../styles/themes/deviceBreakPoints'
 
 export const ProfileIssuesContainer = styled.section`
   width: 100%;
-  height: 168px;
+  height: 169px;
   margin-top: -5.5rem;
   background: ${(props) => props.theme.baseProfile};
-  box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -47,5 +48,9 @@ export const ProfileIssuesContainer = styled.section`
         color: ${(props) => props.theme.baseLabel};
       }
     }
+  }
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    width: 700px;
+    margin: -88px auto;
   }
 `

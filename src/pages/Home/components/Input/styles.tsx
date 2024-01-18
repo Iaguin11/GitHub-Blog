@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { DEVICE_BREAKPOINTS } from '../../../../styles/themes/deviceBreakPoints'
 
 export const InputContent = styled.form`
   max-width: 864px;
-  margin-top: 4.5rem;
+  margin-top: 72px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -42,5 +43,10 @@ export const InputContent = styled.form`
       font-weight: 400;
       line-height: 160%;
     }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    max-width: 700px;
+    margin: 15% auto;
   }
 `
